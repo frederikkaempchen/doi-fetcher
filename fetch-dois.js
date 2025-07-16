@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import fetch from 'node-fetch'; // optional in Node 18+
 
-const DATA_PATH = path.join('data', 'papeers-data.json');
+const DATA_PATH = path.join('data', 'papers-data.json');
 const INPUT_PATH = path.join('data', 'input.txt');
 
 const headers = {

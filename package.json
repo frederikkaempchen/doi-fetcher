@@ -1,0 +1,25 @@
+{
+  "name": "doi-fetcher",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "fetches doi metadata from doi links provided in data/inout.txt and prepends it to the existing papers-data.json file",
+  "main": "fetch-dois.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node fetch-dois.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frederikkaempchen/doi-fetcher.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frederikkaempchen/doi-fetcher/issues"
+  },
+  "homepage": "https://github.com/frederikkaempchen/doi-fetcher#readme",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
