@@ -30,7 +30,7 @@ async function fetchPaperMetadata(doi) {
       pp: item.page || ''
     };
   } catch (err) {
-    console.warn(`⚠️ Crossref failed for ${doi}: ${err.message}`);
+    console.warn(`⚠️ ${doi}  crossref failed due to: ${err.message}`);
     return null;
   }
 }
@@ -70,11 +70,11 @@ async function main() {
   });
 
   if (newDois.length === 0) {
-    console.log('✅ No new DOIs to add. All are already in data.json.');
+    console.log('⚠️  No new DOIs to add.');
     return;
   }
 
-  console.log(`📥 Fetching ${newDois.length} new papers...`);
+  console.log(`Fetching ${newDois.length} new papers...`);
 
   const newMetadata = [];
   for (const doi of newDois) {
@@ -83,7 +83,7 @@ async function main() {
   }
 
   if (newMetadata.length === 0) {
-    console.log('⚠️ No new metadata could be fetched.');
+    console.log('⚠️ No new metadata could be fetched. Check your input');
     return;
   }
 
