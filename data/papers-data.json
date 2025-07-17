@@ -1,5 +1,51 @@
 [
   {
+    "title": "Microbial weathering of iron-bearing minerals in deep hydrothermally altered granitic rock of a semi-arid environment (Chilean Coastal Cordillera)",
+    "authors": [
+      "C. Schwerdhelm",
+      "F. J. Hampl",
+      "L. V. Krone",
+      "L. Sauter",
+      "K. Kaphegyi",
+      "L. Horstmann",
+      "D. Straub",
+      "T. Samuels",
+      "M. Mansor",
+      "C. Merino",
+      "F. Matus",
+      "F. v. Blanckenburg",
+      "D. Wagner",
+      "T. Neumann",
+      "A. Kappler",
+      "C. Bryce"
+    ],
+    "journal": "Geo-Bio Interfaces",
+    "publisher": "Mineralogical Society",
+    "doi": "10.1180/gbi.2025.2",
+    "url": "https://doi.org/10.1180/gbi.2025.2",
+    "year": 2025,
+    "volume": "2",
+    "issue": "",
+    "pp": ""
+  },
+  {
+    "title": "nf-core/detaxizer: A Benchmarking Study for Decontamination from Human Sequences",
+    "authors": [
+      "Jannik Seidel",
+      "Camill Kaipf",
+      "Daniel Straub",
+      "Sven Nahnsen"
+    ],
+    "journal": "",
+    "publisher": "Cold Spring Harbor Laboratory",
+    "doi": "10.1101/2025.03.27.645632",
+    "url": "https://doi.org/10.1101/2025.03.27.645632",
+    "year": 2025,
+    "volume": "",
+    "issue": "",
+    "pp": ""
+  },
+  {
     "title": "Coupling of Fe and N cycles by nitrate-reducing Fe(II)-oxidizing microorganisms in the tidal sediments of an extreme acidic river (Río Tinto, Spain)",
     "authors": [
       "Martina Bottaro",
