@@ -1,6 +1,5 @@
 import fs from 'fs/promises';
 import path from 'path';
-import fetch from 'node-fetch'; // optional in Node 18+
 
 const INPUT_PATH = path.join('input.txt');
 const DATA_PATH = path.join('data', 'papers-data.json');
@@ -64,10 +63,16 @@ async function main() {
   const existingData = await loadExistingMetadata();
   const existingDois = new Set(existingData.map(p => p.doi));
 
-  const newDois = inputDois.filter(d => {
+  const seen = new Set();
+  const newDois = [];
+
+  for (const d of inputDois) {
     const doi = d.replace(/^https?:\/\/(dx\.)?doi\.org\//, '');
-    return !existingDois.has(doi);
-  });
+    if (!existingDois.has(doi) && !seen.has(doi)) {
+      seen.add(doi);
+      newDois.push(doi);
+    }
+  }
 
   if (newDois.length === 0) {
     console.log('⚠️  No new DOIs to add.');
@@ -90,7 +95,7 @@ async function main() {
   const updated = [...newMetadata, ...existingData];
 
   await fs.writeFile(DATA_PATH, JSON.stringify(updated, null, 2));
-  console.log(`✅ Added ${newMetadata.length} new papers to data.json`);
+  console.log(`✅ Added ${newMetadata.length} new papers`);
 }
 
 main().catch(err => {
