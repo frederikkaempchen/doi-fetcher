@@ -29,7 +29,7 @@ async function fetchPaperMetadata(doi) {
       pp: item.page || ''
     };
   } catch (err) {
-    console.warn(`⚠️ ${doi}  crossref failed due to: ${err.message}`);
+    console.warn(`⚠️ your input:  ${doi}  failed due to crossref error: ${err.message}`);
     return null;
   }
 }
