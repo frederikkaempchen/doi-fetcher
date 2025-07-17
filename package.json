@@ -5,8 +5,7 @@
   "description": "fetches doi metadata from doi links provided in data/inout.txt and prepends it to the existing papers-data.json file",
   "main": "fetch-dois.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node fetch-dois.js"
+    "start": "./run.sh"
   },
   "repository": {
     "type": "git",

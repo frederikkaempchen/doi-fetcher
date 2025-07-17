@@ -2,8 +2,8 @@ import fs from 'fs/promises';
 import path from 'path';
 import fetch from 'node-fetch'; // optional in Node 18+
 
+const INPUT_PATH = path.join('input.txt');
 const DATA_PATH = path.join('data', 'papers-data.json');
-const INPUT_PATH = path.join('data', 'input.txt');
 
 const headers = {
   'User-Agent': 'doi-fetcher/1.0 (mailto:your@email.com)',

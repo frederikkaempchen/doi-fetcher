@@ -1,0 +1,11 @@
+services:
+  doi-fetcher:
+    build: .
+    container_name: doi-fetcher
+    volumes:
+      - ./data:/app/papers-data.json         # Mounts specified data folder into the container
+      - ./input.txt:/app/input.txt  # Mounts the local input.txt
+    working_dir: /app
+    stdin_open: true           # Needed for nano
+    tty: true                  # Allows interactive terminal usage
+    command: npm start         # Optional override, but already set in Dockerfile
