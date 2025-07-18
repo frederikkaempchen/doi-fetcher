@@ -15,7 +15,7 @@ async function fetchPaperMetadata(doi) {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     const item = data.message;
-
+    console.log('fetched '+ doi)
     return {
       title: Array.isArray(item.title) ? item.title[0] : item.title || 'Unknown',
       authors: item.author?.map(a => `${a.given} ${a.family}`) || [],
@@ -29,7 +29,7 @@ async function fetchPaperMetadata(doi) {
       pp: item.page || ''
     };
   } catch (err) {
-    console.warn(`⚠️ your input:  ${doi}  failed due to crossref error: ${err.message}`);
+    console.warn(`❌ your input:  ${doi}  failed due to crossref error: ${err.message}`);
     return null;
   }
 }
@@ -68,18 +68,23 @@ async function main() {
 
   for (const d of inputDois) {
     const doi = d.replace(/^https?:\/\/(dx\.)?doi\.org\//, '');
-    if (!existingDois.has(doi) && !seen.has(doi)) {
+    if (existingDois.has(doi)) {
+      console.log(`⚠️ skipped  ${doi}  already exists in data`)
+    } else if (seen.has(doi)) {
+      console.log(`⚠️ skipped  ${doi}  occurs multiple times in your input`)
+    }
+    else {
       seen.add(doi);
       newDois.push(doi);
     }
   }
 
   if (newDois.length === 0) {
-    console.log('⚠️  No new DOIs to add.');
+    console.log('⚠️ No new DOIs to add.');
     return;
   }
 
-  console.log(`Fetching ${newDois.length} new papers...`);
+  console.log(`\nFetching ${newDois.length} new papers...`);
 
   const newMetadata = [];
   for (const doi of newDois) {
@@ -95,7 +100,8 @@ async function main() {
   const updated = [...newMetadata, ...existingData];
 
   await fs.writeFile(DATA_PATH, JSON.stringify(updated, null, 2));
-  console.log(`✅ Added ${newMetadata.length} new papers`);
+  console.log(`\n✅ ${newMetadata.length} new Papers added`);
+  console.log('\n')
 }
 
 main().catch(err => {
