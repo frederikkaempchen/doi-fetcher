@@ -29,7 +29,7 @@ async function fetchPaperMetadata(doi) {
       pp: item.page || ''
     };
   } catch (err) {
-    console.warn(`❌ your input:  ${doi}  failed due to crossref error: ${err.message}`);
+    console.warn(`❌  ${doi}  - failed due to crossref error: ${err.message}`);
     return null;
   }
 }
@@ -69,9 +69,9 @@ async function main() {
   for (const d of inputDois) {
     const doi = d.replace(/^https?:\/\/(dx\.)?doi\.org\//, '');
     if (existingDois.has(doi)) {
-      console.log(`⚠️ skipped  ${doi}  already exists in data`)
+      console.log(`⚠️ Skipped  ${doi}  - already exists in data`)
     } else if (seen.has(doi)) {
-      console.log(`⚠️ skipped  ${doi}  occurs multiple times in your input`)
+      console.log(`⚠️ Skipped  ${doi}  - occurs multiple times in your input`)
     }
     else {
       seen.add(doi);
